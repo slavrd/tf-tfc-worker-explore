@@ -9,3 +9,11 @@ resource "null_resource" "env" {
     command = "env"
   }
 }
+
+resource "null_resource" "cat-backend-override" {
+  provisioner "local-exec" {
+    command = "cat zzz_backend_override.tf.json"
+  }
+}
+
+
