@@ -16,4 +16,9 @@ resource "null_resource" "cat-backend-override" {
   }
 }
 
+resource "null_resource" "mem-check" {
+  provisioner "local-exec" {
+    command = "cat /proc/meminfo | grep 'MemTotal'"
+  }
+}
 
