@@ -34,3 +34,12 @@ resource "null_resource" "mem-check" {
   }
 }
 
+resource "null_resource" "run_command" {
+  provisioner "local-exec" {
+    command = "which python3"
+  }
+  triggers = {
+    run_every_time = uuid()
+  }
+}
+
