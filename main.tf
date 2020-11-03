@@ -9,7 +9,7 @@ resource "null_resource" "files" {
 
 resource "null_resource" "env" {
   provisioner "local-exec" {
-    command = "env"
+    command = "env | sort"
   }
   triggers = {
     run_every_time = uuid()
