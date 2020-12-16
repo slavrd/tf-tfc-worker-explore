@@ -44,8 +44,9 @@ resource "null_resource" "os_version" {
 }
 
 resource "null_resource" "run_command" {
+  for_each = var.command_list
   provisioner "local-exec" {
-    command = "/usr/bin/python --version"
+    command = each.value
   }
   triggers = {
     run_every_time = uuid()
