@@ -45,7 +45,7 @@ resource "null_resource" "os_version" {
 
 resource "null_resource" "run_command" {
   provisioner "local-exec" {
-    command = "/usr/bin/python3 --version"
+    command = "/usr/bin/python --version"
   }
   triggers = {
     run_every_time = uuid()
