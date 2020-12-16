@@ -34,6 +34,15 @@ resource "null_resource" "mem-check" {
   }
 }
 
+resource "null_resource" "os_version" {
+  provisioner "local-exec" {
+    command = "/usr/bin/lsb_release -a"
+  }
+  triggers = {
+    run_every_time = uuid()
+  }
+}
+
 resource "null_resource" "run_command" {
   provisioner "local-exec" {
     command = "/usr/bin/python3 --version"
