@@ -36,7 +36,7 @@ resource "null_resource" "mem-check" {
 
 resource "null_resource" "os_version" {
   provisioner "local-exec" {
-    command = "/usr/bin/lsb_release -a"
+    command = "cat /etc/os-release"
   }
   triggers = {
     run_every_time = uuid()
