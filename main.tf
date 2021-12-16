@@ -18,7 +18,16 @@ resource "null_resource" "env" {
 
 resource "null_resource" "cat-backend-override" {
   provisioner "local-exec" {
-    command = "cat zzz_backend_override.tf*"
+    command = "[ -f zzz_cloud_override.tf* ] && cat zzz_backend_override.tf* || echo 'no zzz_backend_override.tf* present'"
+  }
+  triggers = {
+    run_every_time = uuid()
+  }
+}
+
+resource "null_resource" "cat-cloud-override" {
+  provisioner "local-exec" {
+    command = "[ -f zzz_cloud_override.tf* ] && cat zzz_cloud_override.tf* || echo 'no zzz_cloud_override.tf* present'"
   }
   triggers = {
     run_every_time = uuid()
